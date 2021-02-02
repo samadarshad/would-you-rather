@@ -21,13 +21,13 @@ class Nav extends Component {
                         onClick={this.handleItemClick}
                     />
                     <Menu.Item
-                        name='messages'
-                        active={activeItem === 'messages'}
+                        name='new question'
+                        active={activeItem === 'new question'}
                         onClick={this.handleItemClick}
                     />
                     <Menu.Item
-                        name='friends'
-                        active={activeItem === 'friends'}
+                        name='leader board'
+                        active={activeItem === 'leader board'}
                         onClick={this.handleItemClick}
                     />
                     <Menu.Menu position='right'>

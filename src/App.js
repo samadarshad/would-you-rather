@@ -4,6 +4,7 @@ import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import QuestionView from './views/QuestionView'
+import ResultView from './views/ResultView'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <>
         <Nav />
         <QuestionView />
+        <ResultView />
       </>
     </Router>
   );
