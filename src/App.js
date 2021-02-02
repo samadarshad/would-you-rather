@@ -5,12 +5,14 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import QuestionView from './views/QuestionView'
 import ResultView from './views/ResultView'
+import CreateNewQuestionView from './views/CreateNewQuestionView'
 
 function App() {
   return (
     <Router>
       <>
         <Nav />
+        <CreateNewQuestionView />
         <QuestionView />
         <ResultView />
       </>
