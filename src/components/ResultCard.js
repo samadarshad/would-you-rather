@@ -18,6 +18,7 @@ class ResultCard extends Component {
 
     render() {
         return (
+
             <Message info>
                 <Label color='yellow' ribbon='right'>
                     Your Vote
