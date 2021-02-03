@@ -16,6 +16,8 @@ class LeaderboardView extends Component {
         return (
             <Container>
                 <LeaderboardCard />
+                <LeaderboardCard />
+                <LeaderboardCard />
             </Container>
         )
     }
