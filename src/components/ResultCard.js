@@ -15,7 +15,7 @@ import {
 
 
 class ResultCard extends Component {
-
+    //prop selected, boolean
     render() {
         return (
 

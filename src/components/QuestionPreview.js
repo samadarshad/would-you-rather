@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
 import {
     Header,
-    Label,
     Segment,
     Grid,
     Image,
-    Table,
-    Container,
     Button,
 } from 'semantic-ui-react'
-import QuestionForm from '../components/QuestionForm'
+import { Link } from 'react-router-dom'
 
 class QuestionPreview extends Component {
 
@@ -29,9 +26,11 @@ class QuestionPreview extends Component {
                                 Would You Rather...
                             </Header>
                             <p>...write Javascript...</p>
-                            <Button basic fluid color='teal'>
-                                View Poll
+                            <Link to='/questions/1'>
+                                <Button basic fluid color='teal'>
+                                    View Poll
                             </Button>
+                            </Link>
                         </Grid.Column>
                     </Grid>
                 </Segment>

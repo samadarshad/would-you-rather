@@ -9,6 +9,8 @@ import {
 import Result from '../components/Result'
 
 class ResultView extends Component {
+    //no events
+    // get data from store
     render() {
         return (
             <>

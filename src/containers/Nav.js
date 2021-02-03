@@ -7,10 +7,11 @@ import {
 import { NavLink } from 'react-router-dom'
 
 class Nav extends Component {
-    state = { activeItem: 'home' }
+    state = { activeItem: 'home' } //get current page URL from state
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-    //handleSignOut => dispatch action to clear Authed user
+    //events: handleSignOut => dispatch action to clear Authed user
+
 
 
     render() {

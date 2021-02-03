@@ -12,6 +12,8 @@ import {
 import LeaderboardCard from '../components/LeaderboardCard'
 
 class LeaderboardView extends Component {
+    // no events
+    // need to pass down: users details
     render() {
         return (
             <>

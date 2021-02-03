@@ -11,6 +11,8 @@ import {
 } from 'semantic-ui-react'
 
 class CreateNewQuestionView extends Component {
+    //event: add the new question to the store, dispatch an event
+    //controlled component - disable the submit button unless both fields are nonempty
     render() {
         return (
             <>
