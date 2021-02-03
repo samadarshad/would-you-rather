@@ -14,16 +14,27 @@ import {
 } from 'semantic-ui-react'
 
 function App() {
+
+
   return (
     <Router>
       <Container>
         <Nav />
-        <HomepageView />
-        <SignedOutView />
-        <LeaderboardView />
-        <CreateNewQuestionView />
-        <QuestionView />
-        <ResultView />
+        <Route path='/' exact>
+          <HomepageView />
+          <SignedOutView />
+        </Route>
+        <Route path='/leaderboard' exact>
+          <LeaderboardView />
+        </Route>
+        <Route path='/new' exact>
+          <CreateNewQuestionView />
+        </Route>
+        <Route path='/:id'>
+          <QuestionView />
+          <ResultView />
+        </Route>
+
       </Container>
     </Router>
   );

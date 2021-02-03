@@ -4,11 +4,14 @@ import {
     Divider,
     Image
 } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
 
 class Nav extends Component {
     state = { activeItem: 'home' }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+    //handleSignOut => dispatch action to clear Authed user
+
 
     render() {
         const { activeItem } = this.state
@@ -16,25 +19,30 @@ class Nav extends Component {
         return (
             <>
                 <Menu pointing secondary style={{ "padding-top": '10px' }}>
-                    <Menu.Item
-                        name='home'
-                        active={activeItem === 'home'}
-                        onClick={this.handleItemClick}
-                    />
-                    <Menu.Item
-                        name='new question'
-                        active={activeItem === 'new question'}
-                        onClick={this.handleItemClick}
-                    />
-                    <Menu.Item
-                        name='leader board'
-                        active={activeItem === 'leader board'}
-                        onClick={this.handleItemClick}
-                    />
+                    <NavLink to='/' exact activeClassName='active'>
+                        <Menu.Item
+                            name='home'
+                            active={activeItem === 'home'}
+                            onClick={this.handleItemClick}
+                        />
+                    </NavLink>
+                    <NavLink to='/new' exact activeClassName='active'>
+                        <Menu.Item
+                            name='new question'
+                            active={activeItem === 'new question'}
+                            onClick={this.handleItemClick}
+                        />
+                    </NavLink>
+                    <NavLink to='/leaderboard' exact activeClassName='active'>
+                        <Menu.Item
+                            name='leader board'
+                            active={activeItem === 'leader board'}
+                            onClick={this.handleItemClick}
+                        />
+                    </NavLink>
+
                     <Menu.Menu position='right'>
-
                         <div>
-
                             <span>Tyler Mcginnis</span>
                             <Image
                                 src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
