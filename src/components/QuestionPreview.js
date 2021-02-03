@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
     Header,
     Segment,
@@ -25,7 +26,7 @@ class QuestionPreview extends Component {
                             <Header size='medium'>
                                 Would You Rather...
                             </Header>
-                            <p>...write Javascript...</p>
+                            <p>...{this.props.question.optionOne}...</p>
                             <Link to='/questions/1'>
                                 <Button basic fluid color='teal'>
                                     View Poll
@@ -40,7 +41,14 @@ class QuestionPreview extends Component {
 
 }
 
-export default QuestionPreview
+function mapStateToProps({ questions, users }, { id }) {
+    const question = questions[id] ?? null;
+    return {
+        question
+    }
+}
+
+export default connect(mapStateToProps)(QuestionPreview)
 
 
 
