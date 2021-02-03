@@ -13,13 +13,13 @@ class Nav extends Component {
     //events: handleSignOut => dispatch action to clear Authed user
 
 
-
+    // bug below: <a> cannot be decendant of <a> (i.e. menu item inside navlink)
     render() {
         const { activeItem } = this.state
 
         return (
             <>
-                <Menu pointing secondary style={{ "padding-top": '10px' }}>
+                <Menu pointing secondary style={{ "paddingTop": '10px' }}>
                     <NavLink to='/' exact activeClassName='active'>
                         <Menu.Item
                             name='home'

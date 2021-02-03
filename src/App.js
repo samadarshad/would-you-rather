@@ -9,35 +9,43 @@ import CreateNewQuestionView from './containers/CreateNewQuestionView'
 import LeaderboardView from './containers/LeaderboardView'
 import SignedOutView from './containers/SignedOutView'
 import HomepageView from './containers/HomepageView'
+import { handleInitialData } from './actions/shared'
 import {
   Container,
 } from 'semantic-ui-react'
 
-function App() {
+class App extends Component {
+
+  componentDidMount() {
+    this.props.dispatch(handleInitialData())
+  }
+
+  render() {
 
 
-  return (
-    <Router>
-      <Container>
-        <Nav />
-        <Route path='/' exact>
-          <HomepageView />
-          <SignedOutView />
-        </Route>
-        <Route path='/leaderboard' exact>
-          <LeaderboardView />
-        </Route>
-        <Route path='/new' exact>
-          <CreateNewQuestionView />
-        </Route>
-        <Route path='/questions/:id'>
-          <QuestionView />
-          <ResultView />
-        </Route>
+    return (
+      <Router>
+        <Container>
+          <Nav />
+          <Route path='/' exact>
+            <HomepageView />
+            <SignedOutView />
+          </Route>
+          <Route path='/leaderboard' exact>
+            <LeaderboardView />
+          </Route>
+          <Route path='/new' exact>
+            <CreateNewQuestionView />
+          </Route>
+          <Route path='/questions/:id'>
+            <QuestionView />
+            <ResultView />
+          </Route>
 
-      </Container>
-    </Router>
-  );
+        </Container>
+      </Router >
+    );
+  }
 }
 
-export default App;
+export default connect()(App)
