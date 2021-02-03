@@ -15,12 +15,12 @@ class QuestionPreview extends Component {
         return (
             <>
                 <Header attached='top' block>
-                    Tyler asks:
+                    {this.props.user.name} asks:
                 </Header>
                 <Segment attached>
                     <Grid columns={3} divided>
                         <Grid.Column className='five wide column'>
-                            <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' size='small' circular centered />
+                            <Image src={this.props.user.avatarURL} size='small' circular centered />
                         </Grid.Column>
                         <Grid.Column className='eleven wide column'>
                             <Header size='medium'>
@@ -42,9 +42,11 @@ class QuestionPreview extends Component {
 }
 
 function mapStateToProps({ questions, users }, { id }) {
-    const question = questions[id] ?? null;
+    const question = questions[id];
+    const user = users[questions[id].author]
     return {
-        question
+        question,
+        user
     }
 }
 
