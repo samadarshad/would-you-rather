@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
     Segment,
 } from 'semantic-ui-react'
@@ -6,21 +7,26 @@ import QuestionPreview from '../components/QuestionPreview'
 import HomepageMenu from '../components/HomepageMenu'
 
 class HomepageView extends Component {
-    //no events
-    //needs to pass down: authedUser, questions, responses, users
 
     render() {
         return (
             <>
                 <HomepageMenu />
                 <Segment attached>
-                    <QuestionPreview />
-                    <QuestionPreview />
-                    <QuestionPreview />
+                    {this.props.questionIds.map((id) => (
+                        <QuestionPreview key={id} id={id} />
+                    ))}
                 </Segment>
             </>
         )
     }
 }
 
-export default HomepageView
+function mapStateToProps({ questions }) {
+    return {
+        questionIds: Object.keys(questions)
+            .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+    }
+}
+
+export default connect(mapStateToProps)(HomepageView)
