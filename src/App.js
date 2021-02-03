@@ -8,17 +8,26 @@ import ResultView from './views/ResultView'
 import CreateNewQuestionView from './views/CreateNewQuestionView'
 import LeaderboardView from './views/LeaderboardView'
 import SignedOutView from './views/SignedOutView'
+import HomepageView from './views/HomepageView'
+import {
+  Container,
+} from 'semantic-ui-react'
 
 function App() {
   return (
     <Router>
       <>
         <Nav />
-        <SignedOutView />
-        <LeaderboardView />
-        <CreateNewQuestionView />
-        <QuestionView />
-        <ResultView />
+        <Container>
+
+          <HomepageView />
+          <SignedOutView />
+          <LeaderboardView />
+          <CreateNewQuestionView />
+          <QuestionView />
+          <ResultView />
+
+        </Container>
       </>
     </Router>
   );

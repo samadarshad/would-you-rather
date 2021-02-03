@@ -37,7 +37,7 @@ class SignedOutView extends Component {
 
 
         return (
-            <Container>
+            <>
                 <Header size='huge' attached='top' block textAlign='center'>
                     Welcome to the Would You Rather App!
                     <Header.Subheader>Please sign in to continue</Header.Subheader>
@@ -54,7 +54,7 @@ class SignedOutView extends Component {
                     <br />
                     <Button color='teal' fluid>Sign In</Button>
                 </Segment>
-            </Container>
+            </>
         )
     }
 }

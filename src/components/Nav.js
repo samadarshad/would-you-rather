@@ -13,7 +13,7 @@ class Nav extends Component {
         const { activeItem } = this.state
 
         return (
-            <div>
+            <>
                 <Menu pointing secondary>
                     <Menu.Item
                         name='home'
@@ -39,7 +39,7 @@ class Nav extends Component {
                     </Menu.Menu>
                 </Menu>
                 <Divider hidden />
-            </div>
+            </>
         )
     }
 }

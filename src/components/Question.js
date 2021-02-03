@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
 import {
-    Container,
-    Grid,
     Header,
+    Label,
     Segment,
+    Grid,
     Image,
+    Table,
+    Container,
 } from 'semantic-ui-react'
-import Result from '../components/Result'
+import QuestionForm from '../components/QuestionForm'
 
-class ResultView extends Component {
+class Question extends Component {
+
     render() {
         return (
             <>
                 <Header attached='top' block>
-                    Asked by Tyler
+                    Tyler asks:
                 </Header>
                 <Segment attached>
                     <Grid columns={3} divided>
@@ -21,13 +24,17 @@ class ResultView extends Component {
                             <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' size='medium' circular />
                         </Grid.Column>
                         <Grid.Column className='eleven wide column'>
-                            <Result />
+                            <QuestionForm />
                         </Grid.Column>
                     </Grid>
                 </Segment>
             </>
         )
     }
+
 }
 
-export default ResultView
+export default Question
+
+
+

@@ -14,11 +14,11 @@ import LeaderboardCard from '../components/LeaderboardCard'
 class LeaderboardView extends Component {
     render() {
         return (
-            <Container>
+            <>
                 <LeaderboardCard />
                 <LeaderboardCard />
                 <LeaderboardCard />
-            </Container>
+            </>
         )
     }
 }

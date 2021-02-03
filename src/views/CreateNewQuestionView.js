@@ -13,7 +13,7 @@ import {
 class CreateNewQuestionView extends Component {
     render() {
         return (
-            <Container>
+            <>
                 <Header size='huge' attached='top' textAlign='center' >
                     Create New Question
                 </Header>
@@ -35,7 +35,7 @@ class CreateNewQuestionView extends Component {
                         <Button color='green' fluid>Submit</Button>
                     </Form>
                 </Segment>
-            </Container>
+            </>
         )
     }
 }
