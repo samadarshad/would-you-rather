@@ -16,19 +16,15 @@ import {
 function App() {
   return (
     <Router>
-      <>
+      <Container>
         <Nav />
-        <Container>
-
-          <HomepageView />
-          <SignedOutView />
-          <LeaderboardView />
-          <CreateNewQuestionView />
-          <QuestionView />
-          <ResultView />
-
-        </Container>
-      </>
+        <HomepageView />
+        <SignedOutView />
+        <LeaderboardView />
+        <CreateNewQuestionView />
+        <QuestionView />
+        <ResultView />
+      </Container>
     </Router>
   );
 }

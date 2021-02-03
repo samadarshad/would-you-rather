@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {
     Menu,
-    Divider
+    Divider,
+    Image
 } from 'semantic-ui-react'
 
 class Nav extends Component {
@@ -14,7 +15,7 @@ class Nav extends Component {
 
         return (
             <>
-                <Menu pointing secondary>
+                <Menu pointing secondary style={{ "padding-top": '10px' }}>
                     <Menu.Item
                         name='home'
                         active={activeItem === 'home'}
@@ -31,6 +32,16 @@ class Nav extends Component {
                         onClick={this.handleItemClick}
                     />
                     <Menu.Menu position='right'>
+
+                        <div>
+
+                            <span>Tyler Mcginnis</span>
+                            <Image
+                                src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
+                                avatar
+                                spaced="left"
+                                verticalAlign='bottom' />
+                        </div>
                         <Menu.Item
                             name='logout'
                             active={activeItem === 'logout'}
