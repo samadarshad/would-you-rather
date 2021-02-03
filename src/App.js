@@ -7,12 +7,14 @@ import QuestionView from './views/QuestionView'
 import ResultView from './views/ResultView'
 import CreateNewQuestionView from './views/CreateNewQuestionView'
 import LeaderboardView from './views/LeaderboardView'
+import SignedOutView from './views/SignedOutView'
 
 function App() {
   return (
     <Router>
       <>
         <Nav />
+        <SignedOutView />
         <LeaderboardView />
         <CreateNewQuestionView />
         <QuestionView />
