@@ -21,7 +21,7 @@ class Question extends Component {
                 <Segment attached>
                     <Grid columns={3} divided>
                         <Grid.Column className='five wide column'>
-                            <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' size='medium' circular />
+                            <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' size='medium' circular centered />
                         </Grid.Column>
                         <Grid.Column className='eleven wide column'>
                             <QuestionForm />

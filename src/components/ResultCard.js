@@ -20,12 +20,10 @@ class ResultCard extends Component {
         return (
 
             <Message info>
-                <Label color='yellow' ribbon='right'>
-                    Your Vote
-                    </Label>
+                <Label circular color='yellow' size='medium' floating>Your Vote</Label>
                 <Message.Header>Option 1</Message.Header>
                 <Divider hidden />
-                <Progress percent={44} progress>2 out of 3 votes</Progress>
+                <Progress percent={44} progress color='teal' size='medium'>2 out of 3 votes</Progress>
             </Message>
         )
     }

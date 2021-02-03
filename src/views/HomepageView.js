@@ -11,6 +11,7 @@ import {
     Menu,
 } from 'semantic-ui-react'
 import Question from '../components/Question'
+import QuestionPreview from '../components/QuestionPreview'
 
 class HomepageView extends Component {
     state = {
@@ -44,7 +45,7 @@ class HomepageView extends Component {
                 <Segment attached>
                     <Question />
                     <Question />
-                    <Question />
+                    <QuestionPreview />
                 </Segment>
             </>
         )

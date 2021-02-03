@@ -18,7 +18,7 @@ class LeaderboardCard extends Component {
                 </div>
                 <Grid divided>
                     <Grid.Column className='four wide column'>
-                        <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' size='small' circular />
+                        <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' size='small' circular centered />
                     </Grid.Column>
                     <Grid.Column className='nine wide column'>
                         <Header size='large'>Sarah Edo</Header>
