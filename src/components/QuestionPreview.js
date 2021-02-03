@@ -43,7 +43,7 @@ class QuestionPreview extends Component {
 
 function mapStateToProps({ questions, users }, { id }) {
     const question = questions[id];
-    const user = users[questions[id].author]
+    const user = users[questions[id].author] ?? null;
     return {
         question,
         user
