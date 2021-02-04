@@ -2,30 +2,68 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
     Segment,
+    Menu,
 } from 'semantic-ui-react'
 import QuestionPreview from '../components/QuestionPreview'
 import HomepageMenu from '../components/HomepageMenu'
 
 class HomepageView extends Component {
+    state = {
+        activeItem: 'unanswered'
+    }
+
+    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
     render() {
+        const { activeItem } = this.state
+
         return (
             <>
-                <HomepageMenu />
+                <Menu widths={2} attached='top'>
+                    <Menu.Item
+                        name='unanswered'
+                        active={activeItem === 'unanswered'}
+                        onClick={this.handleItemClick}
+                    >
+                        Unanswered Questions
+                    </Menu.Item>
+
+                    <Menu.Item
+                        name='answered'
+                        active={activeItem === 'answered'}
+                        onClick={this.handleItemClick}
+                    >
+                        Answered Questions
+                    </Menu.Item>
+                </Menu>
                 <Segment attached>
-                    {this.props.questionIds.map((id) => (
-                        <QuestionPreview key={id} id={id} />
-                    ))}
+                    {activeItem === 'answered'
+                        ? this.props.answeredQuestionIds.map((id) => (
+                            <QuestionPreview key={id} id={id} />
+                        ))
+                        : this.props.unansweredQuestionIds.map((id) => (
+                            <QuestionPreview key={id} id={id} />
+                        ))
+                    }
                 </Segment>
             </>
         )
     }
 }
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ questions, users, answers, authedUser }) {
+    const allQuestionIds = Object.keys(questions).sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+    const answeredQuestionIds = allQuestionIds.filter((questionId) => {
+        const answeredOptionOne = answers[questionId].optionOne.includes(authedUser)
+        const answeredOptionTwo = answers[questionId].optionTwo.includes(authedUser)
+        const answered = answeredOptionOne || answeredOptionTwo
+        return (answered)
+    })
+    const unansweredQuestionIds = allQuestionIds.filter((questionId) => !answeredQuestionIds.includes(questionId))
     return {
-        questionIds: Object.keys(questions)
-            .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+        questionIds: allQuestionIds,
+        answeredQuestionIds: answeredQuestionIds,
+        unansweredQuestionIds: unansweredQuestionIds
     }
 }
 

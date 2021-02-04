@@ -36,8 +36,10 @@ class App extends Component {
             :
             <>
               <Route path='/' exact>
-                <HomepageView />
-                <SignedOutView />
+                {this.props.authedUser !== null
+                  ? <HomepageView />
+                  : <SignedOutView />
+                }
               </Route>
               <Route path='/leaderboard' exact>
                 <LeaderboardView />
@@ -55,9 +57,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ loading }) {
+function mapStateToProps({ loading, authedUser }) {
   return {
-    loading: loading !== LoadingStatus.SUCCEEDED
+    loading: loading !== LoadingStatus.SUCCEEDED,
+    authedUser
   }
 }
 
