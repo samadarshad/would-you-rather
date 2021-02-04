@@ -57,8 +57,8 @@ class Nav extends Component {
                             onClick={this.handleItemClick}
                         />
                     </Menu.Menu>
+
                 </Menu>
-                <Divider hidden />
             </>
         )
     }

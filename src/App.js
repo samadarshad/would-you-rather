@@ -9,6 +9,8 @@ import CreateNewQuestionView from './views/CreateNewQuestionView'
 import LeaderboardView from './views/LeaderboardView'
 import SignedOutView from './views/SignedOutView'
 import HomepageView from './views/HomepageView'
+import LoadingBar from 'react-redux-loading'
+
 import { LoadingStatus } from './actions/loading'
 import { handleInitialData } from './actions/shared'
 import {
@@ -26,10 +28,11 @@ class App extends Component {
 
     return (
       <Router>
+        <LoadingBar />
         <Container>
           <Nav />
           {this.props.loading === true
-            ? "Loading"
+            ? null
             :
             <>
               <Route path='/' exact>
