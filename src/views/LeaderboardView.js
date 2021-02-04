@@ -45,8 +45,11 @@ function mapStateToProps({ users, questions, answers }) {
                 score: (asked.length + answered.length)
             }))
     const sorted =
-        scored.sort((a, b) => b.score - a.score)
-    debugger
+        scored.sort((a, b) => b.score - a.score).map((value, index) => ({
+            index,
+            ...value
+        }))
+
     return {
         sorted
     }

@@ -11,19 +11,31 @@ import {
 
 class LeaderboardCard extends Component {
 
+
+
     render() {
-        const { name, asked, answered, score } = this.props
+        const { user, asked, answered, score, position } = this.props
+        const positionToColor = {
+            0: 'yellow',
+            1: 'grey',
+            2: 'brown'
+        }
+
         return (
             <Segment>
-                <div className="ui top left corner yellow label">
-                    <i className="trophy icon"></i>
-                </div>
+                {position <= 2
+                    ? <div className={`ui top left corner ${positionToColor[position]} label`}>
+                        <i className="trophy icon"></i>
+                    </div>
+                    : null
+                }
+
                 <Grid divided>
                     <Grid.Column className='four wide column'>
-                        <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' size='small' circular centered />
+                        <Image src={user.avatarURL} size='small' circular centered />
                     </Grid.Column>
                     <Grid.Column className='nine wide column'>
-                        <Header size='large'>{name}</Header>
+                        <Header size='large'>{user.name}</Header>
 
                         <Table basic='very' fluid>
                             <Table.Body>
@@ -68,15 +80,17 @@ class LeaderboardCard extends Component {
 }
 
 function mapStateToProps({ users }, { userAndScore }) {
-    const name = users[userAndScore.id].name
+    const user = users[userAndScore.id]
     const asked = userAndScore.asked
     const answered = userAndScore.answered
     const score = userAndScore.score
+    const position = userAndScore.index
     return {
-        name,
+        user,
         asked,
         answered,
-        score
+        score,
+        position
     }
 }
 
