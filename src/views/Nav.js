@@ -4,7 +4,7 @@ import {
     Divider,
     Image
 } from 'semantic-ui-react'
-import { NavLink } from 'react-router-dom'
+import { withRouter, NavLink } from 'react-router-dom'
 
 class Nav extends Component {
     state = { activeItem: 'home' } //get current page URL from state
@@ -20,27 +20,27 @@ class Nav extends Component {
         return (
             <>
                 <Menu pointing secondary style={{ "paddingTop": '10px' }}>
-                    <NavLink to='/' exact activeClassName='active'>
-                        <Menu.Item
-                            name='home'
-                            active={activeItem === 'home'}
-                            onClick={this.handleItemClick}
-                        />
-                    </NavLink>
-                    <NavLink to='/new' exact activeClassName='active'>
-                        <Menu.Item
-                            name='new question'
-                            active={activeItem === 'new question'}
-                            onClick={this.handleItemClick}
-                        />
-                    </NavLink>
-                    <NavLink to='/leaderboard' exact activeClassName='active'>
-                        <Menu.Item
-                            name='leader board'
-                            active={activeItem === 'leader board'}
-                            onClick={this.handleItemClick}
-                        />
-                    </NavLink>
+                    <Menu.Item
+                        as={NavLink}
+                        name='home'
+                        to='/'
+                        active={activeItem === 'home'}
+                        onClick={this.handleItemClick}
+                    />
+                    <Menu.Item
+                        as={NavLink}
+                        to='/new'
+                        name='new question'
+                        active={activeItem === 'new question'}
+                        onClick={this.handleItemClick}
+                    />
+                    <Menu.Item
+                        as={NavLink}
+                        to='/leaderboard'
+                        name='leader board'
+                        active={activeItem === 'leader board'}
+                        onClick={this.handleItemClick}
+                    />
 
                     <Menu.Menu position='right'>
                         <div>
