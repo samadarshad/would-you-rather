@@ -11,6 +11,7 @@ import {
 class LeaderboardCard extends Component {
 
     render() {
+        const { userAndScore } = this.props
         return (
             <Segment>
                 <div className="ui top left corner yellow label">
@@ -21,7 +22,7 @@ class LeaderboardCard extends Component {
                         <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' size='small' circular centered />
                     </Grid.Column>
                     <Grid.Column className='nine wide column'>
-                        <Header size='large'>Sarah Edo</Header>
+                        <Header size='large'>{userAndScore.id}</Header>
 
                         <Table basic='very' fluid>
                             <Table.Body>

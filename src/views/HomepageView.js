@@ -5,7 +5,6 @@ import {
     Menu,
 } from 'semantic-ui-react'
 import QuestionPreview from '../components/QuestionPreview'
-import HomepageMenu from '../components/HomepageMenu'
 
 class HomepageView extends Component {
     state = {
@@ -51,7 +50,7 @@ class HomepageView extends Component {
     }
 }
 
-function mapStateToProps({ questions, users, answers, authedUser }) {
+function mapStateToProps({ questions, answers, authedUser }) {
     const allQuestionIds = Object.keys(questions).sort((a, b) => questions[b].timestamp - questions[a].timestamp)
     const answeredQuestionIds = allQuestionIds.filter((questionId) => {
         const answeredOptionOne = answers[questionId].optionOne.includes(authedUser)
@@ -61,7 +60,6 @@ function mapStateToProps({ questions, users, answers, authedUser }) {
     })
     const unansweredQuestionIds = allQuestionIds.filter((questionId) => !answeredQuestionIds.includes(questionId))
     return {
-        questionIds: allQuestionIds,
         answeredQuestionIds: answeredQuestionIds,
         unansweredQuestionIds: unansweredQuestionIds
     }

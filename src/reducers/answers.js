@@ -6,7 +6,7 @@ export default function answers(state = {}, action) {
             let shapedAnswerData = Object.assign(...Object.entries(action.questions).map(([_, question]) => (
                 {
                     [question.id]: {
-                        id: question.id,
+                        questionId: question.id,
                         optionOne: question.optionOne.votes,
                         optionTwo: question.optionTwo.votes
                     }
