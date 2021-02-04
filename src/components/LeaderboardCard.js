@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
     Header,
     Label,
@@ -11,7 +12,7 @@ import {
 class LeaderboardCard extends Component {
 
     render() {
-        const { userAndScore } = this.props
+        const { name, asked, answered, score } = this.props
         return (
             <Segment>
                 <div className="ui top left corner yellow label">
@@ -22,7 +23,7 @@ class LeaderboardCard extends Component {
                         <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' size='small' circular centered />
                     </Grid.Column>
                     <Grid.Column className='nine wide column'>
-                        <Header size='large'>{userAndScore.id}</Header>
+                        <Header size='large'>{name}</Header>
 
                         <Table basic='very' fluid>
                             <Table.Body>
@@ -32,7 +33,7 @@ class LeaderboardCard extends Component {
                                             Answered questions
                                         </Header>
                                     </Table.Cell>
-                                    <Table.Cell>22</Table.Cell>
+                                    <Table.Cell>{answered}</Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
                                     <Table.Cell>
@@ -40,7 +41,7 @@ class LeaderboardCard extends Component {
                                             Created questions
                                         </Header>
                                     </Table.Cell>
-                                    <Table.Cell>15</Table.Cell>
+                                    <Table.Cell>{asked}</Table.Cell>
                                 </Table.Row>
                             </Table.Body>
                         </Table>
@@ -53,7 +54,7 @@ class LeaderboardCard extends Component {
                                 Score
                             </Header>
                             <Segment attached textAlign='center'>
-                                <Label circular color='green' size='huge'>10</Label>
+                                <Label circular color='green' size='huge'>{score}</Label>
                             </Segment>
                         </Segment.Group>
                     </Grid.Column>
@@ -66,7 +67,17 @@ class LeaderboardCard extends Component {
 
 }
 
-export default LeaderboardCard
+function mapStateToProps({ users }, { userAndScore }) {
+    const name = users[userAndScore.id].name
+    const asked = userAndScore.asked
+    const answered = userAndScore.answered
+    const score = userAndScore.score
+    return {
+        name,
+        asked,
+        answered,
+        score
+    }
+}
 
-
-
+export default connect(mapStateToProps)(LeaderboardCard)
