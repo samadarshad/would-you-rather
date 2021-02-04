@@ -27,7 +27,7 @@ class QuestionPreview extends Component {
                                 Would You Rather...
                             </Header>
                             <p>...{this.props.question.optionOne}...</p>
-                            <Link to='/questions/1'>
+                            <Link to={`/questions/${this.props.id}`}>
                                 <Button basic fluid color='teal'>
                                     View Poll
                             </Button>

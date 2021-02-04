@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
     Button,
     Divider,
@@ -20,19 +21,19 @@ class QuestionForm extends Component {
                 <Form>
                     <Form.Field>
                         <Radio
-                            label='Choose this'
+                            label={this.props.question.optionOne}
                             name='radioGroup'
-                            value='this'
-                            checked={this.state.value === 'this'}
+                            value='optionOne'
+                            checked={this.state.value === 'optionOne'}
                             onChange={this.handleChange}
                         />
                     </Form.Field>
                     <Form.Field>
                         <Radio
-                            label='Or that'
+                            label={this.props.question.optionTwo}
                             name='radioGroup'
-                            value='that'
-                            checked={this.state.value === 'that'}
+                            value='optionTwo'
+                            checked={this.state.value === 'optionTwo'}
                             onChange={this.handleChange}
                         />
                     </Form.Field>
@@ -47,4 +48,14 @@ class QuestionForm extends Component {
 
 }
 
-export default QuestionForm
+function mapStateToProps({ questions, users }, { id }) {
+
+    const question = questions[id] ?? null;
+    const user = question ? users[questions[id].author] : null;
+    return {
+        question,
+        user,
+    }
+}
+
+export default connect(mapStateToProps)(QuestionForm)
