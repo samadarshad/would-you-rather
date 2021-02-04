@@ -9,6 +9,7 @@ import CreateNewQuestionView from './views/CreateNewQuestionView'
 import LeaderboardView from './views/LeaderboardView'
 import SignedOutView from './views/SignedOutView'
 import HomepageView from './views/HomepageView'
+import { LoadingStatus } from './actions/loading'
 import { handleInitialData } from './actions/shared'
 import {
   Container,
@@ -27,18 +28,23 @@ class App extends Component {
       <Router>
         <Container>
           <Nav />
-          <Route path='/' exact>
-            <HomepageView />
-            <SignedOutView />
-          </Route>
-          <Route path='/leaderboard' exact>
-            <LeaderboardView />
-          </Route>
-          <Route path='/new' exact>
-            <CreateNewQuestionView />
-          </Route>
-          <Route path='/questions/:id' component={QuestionView} />
-
+          {this.props.loading === true
+            ? "Loading"
+            :
+            <>
+              <Route path='/' exact>
+                <HomepageView />
+                <SignedOutView />
+              </Route>
+              <Route path='/leaderboard' exact>
+                <LeaderboardView />
+              </Route>
+              <Route path='/new' exact>
+                <CreateNewQuestionView />
+              </Route>
+              <Route path='/questions/:id' component={QuestionView} />
+            </>
+          }
 
         </Container>
       </Router >
@@ -46,4 +52,10 @@ class App extends Component {
   }
 }
 
-export default connect()(App)
+function mapStateToProps({ loading }) {
+  return {
+    loading: loading !== LoadingStatus.SUCCEEDED
+  }
+}
+
+export default connect(mapStateToProps)(App)
