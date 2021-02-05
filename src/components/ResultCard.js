@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
 import {
-    Button,
     Divider,
-    Form,
-    Radio,
-    Card,
-    Header,
     Progress,
     Label,
-    Segment,
     Message,
 } from 'semantic-ui-react'
 import { getOptionOneUserIdsByQuestionId, getOptionTwoUserIdsByQuestionId } from '../helper'
@@ -16,7 +10,7 @@ import { connect } from 'react-redux'
 
 
 class ResultCard extends Component {
-    //prop selected, boolean
+
     render() {
         return (
             <>

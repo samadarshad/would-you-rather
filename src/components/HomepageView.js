@@ -5,7 +5,7 @@ import {
     Segment,
     Menu,
 } from 'semantic-ui-react'
-import QuestionPreview from '../components/QuestionPreview'
+import QuestionPreview from './QuestionPreview'
 
 class HomepageView extends Component {
     state = {

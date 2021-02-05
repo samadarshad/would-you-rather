@@ -2,11 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import {
-    Container,
-    Grid,
     Header,
     Segment,
-    Image,
     Form,
     Button,
     Divider,
@@ -21,7 +18,7 @@ class CreateNewQuestionView extends Component {
     }
 
     handleChange = (e) => {
-        this.setState((prevState) => ({
+        this.setState(() => ({
             [e.target.name]: e.target.value
         }))
     }
@@ -39,8 +36,7 @@ class CreateNewQuestionView extends Component {
             toHome: true
         })
     }
-    //event: add the new question to the store, dispatch an event
-    //controlled component - disable the submit button unless both fields are nonempty
+
     render() {
 
         if (this.props.unauthed)
@@ -105,7 +101,7 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-function mergeProps(stateProps, dispatchProps, ownProps) {
+function mergeProps(stateProps, dispatchProps) {
     function AddQuestion(optionOne, optionTwo) {
         dispatchProps.dispatch(handleAddQuestion(optionOne, optionTwo, stateProps.authedUser))
     }

@@ -2,14 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import {
-    Container,
-    Grid,
     Header,
     Segment,
     Image,
-    Form,
     Button,
-    Divider,
     Dropdown,
 } from 'semantic-ui-react'
 import { setAuthedUser } from '../actions/authedUser'

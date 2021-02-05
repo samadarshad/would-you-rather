@@ -2,13 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
     Menu,
-    Divider,
     Image
 } from 'semantic-ui-react'
-import { withRouter, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
-import { Redirect, } from 'react-router-dom'
-
 
 class Nav extends Component {
     handleSignOut = (e) => {
@@ -16,7 +13,6 @@ class Nav extends Component {
 
         this.props.SignOut()
     }
-
 
     render() {
 
@@ -59,17 +55,13 @@ class Nav extends Component {
 
                         : null
                     }
-
-
                 </Menu>
             </>
         )
     }
 }
 
-
-
-function mapStateToProps({ users, authedUser }, props) {
+function mapStateToProps({ users, authedUser }) {
     const user = users[authedUser] ?? null
 
     return {
@@ -85,6 +77,5 @@ function mapDispatchToProps(dispatch) {
         SignOut
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav)

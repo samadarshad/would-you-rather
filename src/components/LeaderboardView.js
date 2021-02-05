@@ -1,21 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getAskedQuestionIdsByUserId, getAnsweredQuestionIdsByUserId } from '../helper'
-import {
-    Container,
-    Grid,
-    Header,
-    Segment,
-    Image,
-    Form,
-    Button,
-    Divider,
-} from 'semantic-ui-react'
-import LeaderboardCard from '../components/LeaderboardCard'
+import LeaderboardCard from './LeaderboardCard'
 import { Redirect } from 'react-router-dom'
 class LeaderboardView extends Component {
-    // no events
-    // need to pass down: users details
+
     render() {
         if (this.props.unauthed)
             return <Redirect to='/signin' />
