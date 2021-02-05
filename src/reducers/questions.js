@@ -31,7 +31,6 @@ export default function questions(state = {}, action) {
                     timestamp: question.timestamp,
                 }
             }
-            debugger
             return {
                 ...state,
                 ...shapedQuestionData

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import {
     Container,
     Grid,
@@ -35,12 +36,17 @@ class CreateNewQuestionView extends Component {
         this.setState({
             optionOne: '',
             optionTwo: '',
-            // toHome: id ? false : true
+            toHome: true
         })
     }
     //event: add the new question to the store, dispatch an event
     //controlled component - disable the submit button unless both fields are nonempty
     render() {
+
+        if (this.state.toHome === true) {
+            return <Redirect to='/' />
+        }
+
         return (
             <>
                 <Header size='huge' attached='top' textAlign='center' >
