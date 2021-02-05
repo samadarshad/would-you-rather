@@ -54,6 +54,8 @@ function mapStateToProps({ questions, authedUser, answers }, props) {
             count = usersOptionTwo.length
             authedUserSelectedOption = usersOptionTwo.includes(authedUser)
             break
+        default:
+            throw new Error('no option defined');
     }
     percentage = (100 * count / total).toPrecision(2)
     return {
