@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {
     Segment,
@@ -15,6 +16,8 @@ class HomepageView extends Component {
 
     render() {
         const { activeItem } = this.state
+        if (this.props.unauthed)
+            return <Redirect to='/signin' />
 
         return (
             <>
@@ -61,7 +64,8 @@ function mapStateToProps({ questions, answers, authedUser }) {
     const unansweredQuestionIds = allQuestionIds.filter((questionId) => !answeredQuestionIds.includes(questionId))
     return {
         answeredQuestionIds: answeredQuestionIds,
-        unansweredQuestionIds: unansweredQuestionIds
+        unansweredQuestionIds: unansweredQuestionIds,
+        unauthed: authedUser === null
     }
 }
 

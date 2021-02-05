@@ -9,6 +9,7 @@ import LeaderboardView from './views/LeaderboardView'
 import SignedOutView from './views/SignedOutView'
 import HomepageView from './views/HomepageView'
 import LoadingBar from 'react-redux-loading'
+import { Redirect } from 'react-router-dom'
 
 import { LoadingStatus } from './actions/loading'
 import { handleInitialData } from './actions/shared'
@@ -23,8 +24,6 @@ class App extends Component {
   }
 
   render() {
-
-
     return (
       <Router>
         <LoadingBar />
@@ -35,18 +34,10 @@ class App extends Component {
             :
             <>
               <Nav />
-              <Route path='/' exact>
-                {this.props.authedUser !== null
-                  ? <HomepageView />
-                  : <SignedOutView />
-                }
-              </Route>
-              <Route path='/leaderboard' exact>
-                <LeaderboardView />
-              </Route>
-              <Route path='/new' exact>
-                <CreateNewQuestionView />
-              </Route>
+              <Route exact path='/' component={HomepageView} />
+              <Route exact path='/signin' component={SignedOutView} />
+              <Route exact path='/leaderboard' component={LeaderboardView} />
+              <Route exact path='/new' component={CreateNewQuestionView} />
               <Route path='/questions/:id' component={QuestionView} />
             </>
           }

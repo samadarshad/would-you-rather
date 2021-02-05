@@ -7,22 +7,24 @@ import {
 } from 'semantic-ui-react'
 import { withRouter, NavLink } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
+import { Redirect } from 'react-router-dom'
 class Nav extends Component {
     state = {}
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-    //events: handleSignOut => dispatch action to clear Authed user
 
     handleSignOut = (e) => {
         e.preventDefault()
 
         this.props.SignOut()
+
+        this.setState({})
     }
 
-    // bug below: <a> cannot be decendant of <a> (i.e. menu item inside navlink)
     render() {
         const { activeItem } = this.state
         const { user } = this.props
+
         return (
             <>
                 <Menu pointing secondary style={{ "paddingTop": '10px' }}>

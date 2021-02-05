@@ -12,11 +12,14 @@ import {
     Divider,
 } from 'semantic-ui-react'
 import LeaderboardCard from '../components/LeaderboardCard'
-
+import { Redirect } from 'react-router-dom'
 class LeaderboardView extends Component {
     // no events
     // need to pass down: users details
     render() {
+        if (this.props.unauthed)
+            return <Redirect to='/signin' />
+
         return (
             <>
                 {this.props.sorted.map((userAndScore) => (
@@ -27,7 +30,7 @@ class LeaderboardView extends Component {
     }
 }
 
-function mapStateToProps({ users, questions, answers }) {
+function mapStateToProps({ users, questions, answers, authedUser }) {
     const allUserIds = Object.values(users).map((user) => (user.id))
     const values =
         allUserIds.map((id) => ({
@@ -51,7 +54,8 @@ function mapStateToProps({ users, questions, answers }) {
         }))
 
     return {
-        sorted
+        sorted,
+        unauthed: authedUser === null
     }
 }
 

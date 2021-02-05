@@ -43,6 +43,9 @@ class CreateNewQuestionView extends Component {
     //controlled component - disable the submit button unless both fields are nonempty
     render() {
 
+        if (this.props.unauthed)
+            return <Redirect to='/signin' />
+
         if (this.state.toHome === true) {
             return <Redirect to='/' />
         }
@@ -91,7 +94,8 @@ class CreateNewQuestionView extends Component {
 
 function mapStateToProps({ authedUser }) {
     return {
-        authedUser
+        authedUser,
+        unauthed: authedUser === null
     }
 }
 
@@ -106,7 +110,8 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
         dispatchProps.dispatch(handleAddQuestion(optionOne, optionTwo, stateProps.authedUser))
     }
     return {
-        AddQuestion
+        AddQuestion,
+        unauthed: stateProps.unauthed
     }
 }
 
