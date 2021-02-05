@@ -1,9 +1,10 @@
-import { RECEIVE_ANSWERS } from '../actions/answers'
+import { RECEIVE_ANSWERS, ADD_ANSWER } from '../actions/answers'
 
 export default function answers(state = {}, action) {
+    let shapedAnswerData
     switch (action.type) {
         case RECEIVE_ANSWERS:
-            let shapedAnswerData = Object.assign(...Object.entries(action.questions).map(([_, question]) => (
+            shapedAnswerData = Object.assign(...Object.entries(action.questions).map(([_, question]) => (
                 {
                     [question.id]: {
                         questionId: question.id,
@@ -12,6 +13,26 @@ export default function answers(state = {}, action) {
                     }
                 }
             )))
+            return {
+                ...state,
+                ...shapedAnswerData
+            }
+        case ADD_ANSWER:
+            const {
+                authedUser,
+                qid,
+                answer
+            } = action.questionAnswer
+
+            shapedAnswerData =
+            {
+                [qid]: {
+                    ...state[qid],
+                    optionOne: state[qid].optionOne.concat((answer === 'optionOne') ? authedUser : []),//Object.assign({}, state[qid].optionOne, (answer === 'optionOne') ? {authedUser} : ''),
+                    optionTwo: state[qid].optionTwo.concat((answer === 'optionTwo') ? authedUser : []),
+                }
+            }
+            debugger
             return {
                 ...state,
                 ...shapedAnswerData
