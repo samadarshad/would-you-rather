@@ -35,7 +35,7 @@ class App extends Component {
               <Route exact path='/' component={HomepageView} />
               <Route exact path='/signin' component={SignedOutView} />
               <Route exact path='/leaderboard' component={LeaderboardView} />
-              <Route exact path='/new' component={CreateNewQuestionView} />
+              <Route exact path='/add' component={CreateNewQuestionView} />
               <Route path='/questions/:id' component={QuestionView} />
             </>
           }
