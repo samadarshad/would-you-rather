@@ -4,7 +4,6 @@ import { getAskedQuestionIdsByUserId, getAnsweredQuestionIdsByUserId } from '../
 import LeaderboardCard from './LeaderboardCard'
 import { Redirect } from 'react-router-dom'
 class LeaderboardView extends Component {
-
     render() {
         if (this.props.unauthed)
             return <Redirect to='/signin' />

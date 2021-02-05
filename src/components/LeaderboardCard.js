@@ -11,8 +11,6 @@ import {
 
 class LeaderboardCard extends Component {
 
-
-
     render() {
         const { user, asked, answered, score, position } = this.props
         const positionToColor = {
@@ -72,11 +70,8 @@ class LeaderboardCard extends Component {
                     </Grid.Column>
                 </Grid>
             </Segment>
-
-
         )
     }
-
 }
 
 function mapStateToProps({ users }, { userAndScore }) {

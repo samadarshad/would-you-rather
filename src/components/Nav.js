@@ -10,12 +10,10 @@ import { setAuthedUser } from '../actions/authedUser'
 class Nav extends Component {
     handleSignOut = (e) => {
         e.preventDefault()
-
         this.props.SignOut()
     }
 
     render() {
-
         const { user } = this.props
 
         return (
@@ -52,7 +50,6 @@ class Nav extends Component {
                                 onClick={this.handleSignOut}
                             />
                         </Menu.Menu>
-
                         : null
                     }
                 </Menu>
@@ -63,7 +60,6 @@ class Nav extends Component {
 
 function mapStateToProps({ users, authedUser }) {
     const user = users[authedUser] ?? null
-
     return {
         user,
     }

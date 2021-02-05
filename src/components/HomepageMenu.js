@@ -1,13 +1,5 @@
 import React, { Component } from 'react'
 import {
-    Container,
-    Grid,
-    Header,
-    Segment,
-    Image,
-    Form,
-    Button,
-    Divider,
     Menu,
 } from 'semantic-ui-react'
 

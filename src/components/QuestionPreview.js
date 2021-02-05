@@ -38,7 +38,6 @@ class QuestionPreview extends Component {
             </>
         )
     }
-
 }
 
 function mapStateToProps({ questions, users }, { id }) {

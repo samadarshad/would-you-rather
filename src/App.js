@@ -9,7 +9,6 @@ import LeaderboardView from './components/LeaderboardView'
 import SignedOutView from './components/SignedOutView'
 import HomepageView from './components/HomepageView'
 import LoadingBar from 'react-redux-loading'
-
 import { LoadingStatus } from './actions/loading'
 import { handleInitialData } from './actions/shared'
 import {

@@ -61,11 +61,9 @@ class QuestionForm extends Component {
             </>
         )
     }
-
 }
 
 function mapStateToProps({ questions, users, authedUser }, { id }) {
-
     const question = questions[id] ?? null;
     const user = question ? users[questions[id].author] : null;
     return {
@@ -91,6 +89,5 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
         user: stateProps.user
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(QuestionForm)
