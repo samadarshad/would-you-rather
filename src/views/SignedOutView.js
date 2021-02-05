@@ -12,8 +12,23 @@ import {
     Divider,
     Dropdown,
 } from 'semantic-ui-react'
+import { setAuthedUser } from '../actions/authedUser'
 
 class SignedOutView extends Component {
+    state = {
+        userId: ''
+    }
+
+    handleChange = (e, { value }) => this.setState({ userId: value })
+    handleSubmit = (e) => {
+        e.preventDefault()
+
+        this.props.SignIn(this.state.userId)
+
+        this.setState({
+            userId: ''
+        })
+    }
     render() {
         if (this.props.authed)
             return <Redirect to='/' />
@@ -32,9 +47,12 @@ class SignedOutView extends Component {
                         fluid
                         selection
                         options={this.props.usersOptions}
+                        onChange={this.handleChange}
                     />
                     <br />
-                    <Button color='teal' fluid>Sign In</Button>
+                    <Button color='teal' fluid
+                        disabled={this.state.userId === ''}
+                        onClick={this.handleSubmit}>Sign In</Button>
                 </Segment>
             </>
         )
@@ -55,4 +73,13 @@ function mapStateToProps({ users, authedUser }) {
     }
 }
 
-export default connect(mapStateToProps)(SignedOutView)
+function mapDispatchToProps(dispatch) {
+    function SignIn(userId) {
+        dispatch(setAuthedUser(userId))
+    }
+    return {
+        SignIn
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignedOutView)
