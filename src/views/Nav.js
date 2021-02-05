@@ -7,22 +7,19 @@ import {
 } from 'semantic-ui-react'
 import { withRouter, NavLink } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
-import { Redirect } from 'react-router-dom'
+import { Redirect, } from 'react-router-dom'
+
+
 class Nav extends Component {
-    state = {}
-
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
     handleSignOut = (e) => {
         e.preventDefault()
 
         this.props.SignOut()
-
-        this.setState({})
     }
 
+
     render() {
-        const { activeItem } = this.state
+
         const { user } = this.props
 
         return (
@@ -32,22 +29,16 @@ class Nav extends Component {
                         as={NavLink}
                         name='home'
                         to='/' exact
-                        active={activeItem === 'home'}
-                        onClick={this.handleItemClick}
                     />
                     <Menu.Item
                         as={NavLink}
                         to='/new'
                         name='new question'
-                        active={activeItem === 'new question'}
-                        onClick={this.handleItemClick}
                     />
                     <Menu.Item
                         as={NavLink}
                         to='/leaderboard'
                         name='leader board'
-                        active={activeItem === 'leader board'}
-                        onClick={this.handleItemClick}
                     />
                     {user !== null
                         ?
@@ -62,7 +53,6 @@ class Nav extends Component {
                             </div>
                             <Menu.Item
                                 name='logout'
-                                active={activeItem === 'logout'}
                                 onClick={this.handleSignOut}
                             />
                         </Menu.Menu>
@@ -79,8 +69,9 @@ class Nav extends Component {
 
 
 
-function mapStateToProps({ users, authedUser }) {
+function mapStateToProps({ users, authedUser }, props) {
     const user = users[authedUser] ?? null
+
     return {
         user,
     }
