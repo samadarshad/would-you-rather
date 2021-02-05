@@ -12,3 +12,11 @@ export function getAnsweredQuestionIdsByUserId(answers, userId) {
     })
     return answeredQuestionIds
 }
+
+export function getOptionOneUserIdsByQuestionId(answers, questionId) {
+    return answers[questionId].optionOne
+}
+
+export function getOptionTwoUserIdsByQuestionId(answers, questionId) {
+    return answers[questionId].optionTwo
+}

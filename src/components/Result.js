@@ -11,17 +11,14 @@ import {
 import ResultCard from './ResultCard'
 
 class Result extends Component {
-    state = {}
-    handleChange = (e, { value }) => this.setState({ value })
-
     render() {
         return (
             <>
                 <Header size='large'>
                     Results:
                 </Header>
-                <ResultCard />
-                <ResultCard />
+                <ResultCard option="optionOne" questionId={this.props.id} />
+                <ResultCard option="optionTwo" questionId={this.props.id} />
             </>
         )
     }

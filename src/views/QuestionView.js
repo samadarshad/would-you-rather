@@ -29,7 +29,7 @@ const showResult = (user, id) => (
     </>
 )
 
-const showQuestion = (user, id) => (
+const showQuestion = (user, id) => ( //convert these into react components
     <>
         <Header attached='top' block>
             {user.name} asks:
