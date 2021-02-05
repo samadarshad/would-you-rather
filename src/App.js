@@ -29,11 +29,12 @@ class App extends Component {
       <Router>
         <LoadingBar />
         <Container>
-          <Nav />
+
           {this.props.loading === true
             ? null
             :
             <>
+              <Nav />
               <Route path='/' exact>
                 {this.props.authedUser !== null
                   ? <HomepageView />

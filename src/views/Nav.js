@@ -1,29 +1,35 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
     Menu,
     Divider,
     Image
 } from 'semantic-ui-react'
 import { withRouter, NavLink } from 'react-router-dom'
-
+import { setAuthedUser } from '../actions/authedUser'
 class Nav extends Component {
-    state = { activeItem: 'home' } //get current page URL from state
+    state = {}
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
     //events: handleSignOut => dispatch action to clear Authed user
 
+    handleSignOut = (e) => {
+        e.preventDefault()
+
+        this.props.SignOut()
+    }
 
     // bug below: <a> cannot be decendant of <a> (i.e. menu item inside navlink)
     render() {
         const { activeItem } = this.state
-
+        const { user } = this.props
         return (
             <>
                 <Menu pointing secondary style={{ "paddingTop": '10px' }}>
                     <Menu.Item
                         as={NavLink}
                         name='home'
-                        to='/'
+                        to='/' exact
                         active={activeItem === 'home'}
                         onClick={this.handleItemClick}
                     />
@@ -41,22 +47,27 @@ class Nav extends Component {
                         active={activeItem === 'leader board'}
                         onClick={this.handleItemClick}
                     />
+                    {user !== null
+                        ?
+                        <Menu.Menu position='right'>
+                            <div>
+                                <span>{user.name}</span>
+                                <Image
+                                    src={user.avatarURL}
+                                    avatar
+                                    spaced="left"
+                                    verticalAlign='bottom' />
+                            </div>
+                            <Menu.Item
+                                name='logout'
+                                active={activeItem === 'logout'}
+                                onClick={this.handleSignOut}
+                            />
+                        </Menu.Menu>
 
-                    <Menu.Menu position='right'>
-                        <div>
-                            <span>Tyler Mcginnis</span>
-                            <Image
-                                src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
-                                avatar
-                                spaced="left"
-                                verticalAlign='bottom' />
-                        </div>
-                        <Menu.Item
-                            name='logout'
-                            active={activeItem === 'logout'}
-                            onClick={this.handleItemClick}
-                        />
-                    </Menu.Menu>
+                        : null
+                    }
+
 
                 </Menu>
             </>
@@ -65,4 +76,22 @@ class Nav extends Component {
 }
 
 
-export default Nav
+
+function mapStateToProps({ users, authedUser }) {
+    const user = users[authedUser] ?? null
+    return {
+        user,
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    function SignOut() {
+        dispatch(setAuthedUser(null))
+    }
+    return {
+        SignOut
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)

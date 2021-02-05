@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import {
     Button,
     Divider,
@@ -12,8 +11,7 @@ import { handleAddAnswer } from '../actions/answers'
 
 class QuestionForm extends Component {
     state = {
-        answer: '',
-        toHome: false,
+        answer: ''
     }
     handleChange = (e, { value }) => this.setState({ answer: value })
 
@@ -23,15 +21,11 @@ class QuestionForm extends Component {
         this.props.AddAnswer(this.state.answer)
 
         this.setState({
-            answer: '',
-            toHome: true
+            answer: ''
         })
     }
 
     render() {
-        if (this.state.toHome === true) {
-            return <Redirect to='/' />
-        }
 
         return (
             <>
