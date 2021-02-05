@@ -53,8 +53,8 @@ class HomepageView extends Component {
 function mapStateToProps({ questions, answers, authedUser }) {
     const allQuestionIds = Object.keys(questions).sort((a, b) => questions[b].timestamp - questions[a].timestamp)
     const answeredQuestionIds = allQuestionIds.filter((questionId) => {
-        const answeredOptionOne = answers[questionId].optionOne.includes(authedUser)
-        const answeredOptionTwo = answers[questionId].optionTwo.includes(authedUser)
+        const answeredOptionOne = answers[questionId]?.optionOne.includes(authedUser)
+        const answeredOptionTwo = answers[questionId]?.optionTwo.includes(authedUser)
         const answered = answeredOptionOne || answeredOptionTwo
         return (answered)
     })
