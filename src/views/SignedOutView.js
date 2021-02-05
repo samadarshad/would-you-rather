@@ -40,7 +40,7 @@ class SignedOutView extends Component {
                     <Header.Subheader>Please sign in to continue</Header.Subheader>
                 </Header>
                 <Segment attached >
-                    <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' size='medium' centered />
+                    <Image src='/images/would-you-rather.jpg' size='medium' centered />
                     <Header size='medium' color='teal' textAlign='center'>Sign In</Header>
                     <Dropdown
                         placeholder='Select Friend'
