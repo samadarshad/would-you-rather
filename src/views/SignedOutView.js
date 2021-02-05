@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import {
     Container,
     Grid,
@@ -13,28 +15,8 @@ import {
 
 class SignedOutView extends Component {
     render() {
-
-        const friendOptions = [
-            {
-                key: 'Jenny Hess',
-                text: 'Jenny Hess',
-                value: 'Jenny Hess',
-                image: { avatar: true, src: 'https://react.semantic-ui.com//images/avatar/small/jenny.jpg' },
-            },
-            {
-                key: 'Elliot Fu',
-                text: 'Elliot Fu',
-                value: 'Elliot Fu',
-                image: { avatar: true, src: 'https://react.semantic-ui.com//images/avatar/small/elliot.jpg' },
-            },
-            {
-                key: 'Stevie Feliciano',
-                text: 'Stevie Feliciano',
-                value: 'Stevie Feliciano',
-                image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/large/matthew.png' },
-            }
-        ]
-
+        if (this.props.authed)
+            return <Redirect to='/' />
 
         return (
             <>
@@ -49,7 +31,7 @@ class SignedOutView extends Component {
                         placeholder='Select Friend'
                         fluid
                         selection
-                        options={friendOptions}
+                        options={this.props.usersOptions}
                     />
                     <br />
                     <Button color='teal' fluid>Sign In</Button>
@@ -59,4 +41,18 @@ class SignedOutView extends Component {
     }
 }
 
-export default SignedOutView
+function mapStateToProps({ users, authedUser }) {
+    const usersOptions = Object.values(users).map((user) => ({
+        key: user.id,
+        text: user.name,
+        value: user.id,
+        image: { avatar: true, src: user.avatarURL }
+    }))
+
+    return {
+        usersOptions,
+        authed: authedUser !== null
+    }
+}
+
+export default connect(mapStateToProps)(SignedOutView)
