@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+
 import {
     Container,
     Grid,
@@ -48,8 +50,11 @@ const showQuestion = (user, id) => ( //convert these into react components
 )
 
 class QuestionView extends Component {
-    //event: submit answer to store, using the currently authed user during the action
+
     render() {
+        if (this.props.unauthed)
+            return <Redirect to='/signin' />
+
         return (
             <>
                 {this.props.alreadyAnswered
@@ -71,7 +76,8 @@ function mapStateToProps({ questions, users, authedUser, answers }, props) {
         id,
         question,
         user,
-        alreadyAnswered
+        alreadyAnswered,
+        unauthed: authedUser === null
     }
 }
 

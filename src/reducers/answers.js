@@ -24,12 +24,16 @@ export default function answers(state = {}, action) {
                 answer
             } = action.questionAnswer
 
+            const optionOne = (state[qid]?.optionOne || []).concat((answer === 'optionOne') ? [authedUser] : [])
+            const optionTwo = (state[qid]?.optionTwo || []).concat((answer === 'optionTwo') ? [authedUser] : [])
+
             shapedAnswerData =
             {
                 [qid]: {
                     ...state[qid],
-                    optionOne: state[qid].optionOne.concat((answer === 'optionOne') ? authedUser : []),
-                    optionTwo: state[qid].optionTwo.concat((answer === 'optionTwo') ? authedUser : []),
+                    questionId: qid,
+                    optionOne,
+                    optionTwo,
                 }
             }
 
