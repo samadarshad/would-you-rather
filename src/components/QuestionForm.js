@@ -61,7 +61,8 @@ class QuestionForm extends Component {
 
 
                     <Divider hidden />
-                    <Button color='green' fluid type='submit'>Submit</Button>
+                    <Button color='green' fluid type='submit'
+                        disabled={this.state.answer === ''}>Submit</Button>
                 </Form>
             </>
         )

@@ -28,11 +28,11 @@ export default function answers(state = {}, action) {
             {
                 [qid]: {
                     ...state[qid],
-                    optionOne: state[qid].optionOne.concat((answer === 'optionOne') ? authedUser : []),//Object.assign({}, state[qid].optionOne, (answer === 'optionOne') ? {authedUser} : ''),
+                    optionOne: state[qid].optionOne.concat((answer === 'optionOne') ? authedUser : []),
                     optionTwo: state[qid].optionTwo.concat((answer === 'optionTwo') ? authedUser : []),
                 }
             }
-            debugger
+
             return {
                 ...state,
                 ...shapedAnswerData
